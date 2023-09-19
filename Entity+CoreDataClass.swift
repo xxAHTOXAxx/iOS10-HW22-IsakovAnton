@@ -5,9 +5,9 @@
 //  Created by Антон Исаков on 19.09.2023.
 //
 //
-
-import Foundation
-import CoreData
+//
+//import Foundation
+//import CoreData
 //
 //@objc(Entity)
 //public class Entity: NSManagedObject {

@@ -5,6 +5,7 @@ class FirstScreenViewController: UIViewController {
     
     var data: [String] = []
     
+    
     let textField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Введите текст"
@@ -54,10 +55,15 @@ class FirstScreenViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    func updateTableView() {
+            tableView.reloadData()
+        }
 }
 
 protocol FirstScreenView: class {
     func reloadData()
+    func updateTableView()
 }
 
 extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource {
@@ -80,6 +86,7 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+ 
 }
 
 class ProfilePresenter {

@@ -17,6 +17,7 @@
 		31E170BD2AB978C6000A3805 /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170BB2AB978C6000A3805 /* Entity+CoreDataProperties.swift */; };
 		31E170BF2AB98D62000A3805 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170BE2AB98D62000A3805 /* ProfileViewController.swift */; };
 		31E170C12AB9903A000A3805 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C02AB9903A000A3805 /* Models.swift */; };
+		31E170C32AB9A0C3000A3805 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C22AB9A0C3000A3805 /* CoreData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		31E170BB2AB978C6000A3805 /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		31E170BE2AB98D62000A3805 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		31E170C02AB9903A000A3805 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		31E170C22AB9A0C3000A3805 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				31E170A12AAFA68D000A3805 /* FirstScreenViewController.swift */,
 				31E170BE2AB98D62000A3805 /* ProfileViewController.swift */,
 				31E170C02AB9903A000A3805 /* Models.swift */,
+				31E170C22AB9A0C3000A3805 /* CoreData.swift */,
 				31E170B52AB23B38000A3805 /* Resourses */,
 			);
 			path = "iOS10-HW22 IsakovAnton";
@@ -177,6 +180,7 @@
 				31E170A22AAFA68D000A3805 /* FirstScreenViewController.swift in Sources */,
 				31E1709E2AAFA68D000A3805 /* AppDelegate.swift in Sources */,
 				31E170C12AB9903A000A3805 /* Models.swift in Sources */,
+				31E170C32AB9A0C3000A3805 /* CoreData.swift in Sources */,
 				31E170A02AAFA68D000A3805 /* SceneDelegate.swift in Sources */,
 				31E170BF2AB98D62000A3805 /* ProfileViewController.swift in Sources */,
 				31E170BC2AB978C6000A3805 /* Entity+CoreDataClass.swift in Sources */,

@@ -78,7 +78,7 @@ class ProfileViewController: UIViewController {
     
 }
 
-protocol ProfileView: class {
+protocol ProfileView: ProfileViewController {
     func displayProfileData(name: String, birthDate: Date, gender: Gender)
     func enableEditingMode()
     func disableEditingMode()
