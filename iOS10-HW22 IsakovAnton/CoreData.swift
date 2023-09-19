@@ -1,20 +1,6 @@
 import Foundation
 import CoreData
 
-// Определение CoreDataModel
-class CoreDataModel: NSManagedObject {
-    @NSManaged var text: String
-}
-
-// Определение сущности Profile
-class Profile: NSManagedObject {
-    @NSManaged var name: String?
-    @NSManaged var birthDate: Date?
-    @NSManaged var gender: Int16
-}
-
-
-
 // Протокол для взаимодействия с вторым экраном
 protocol SecondScreenView: class {
     func displayProfileData(name: String, birthDate: Date, gender: Gender)

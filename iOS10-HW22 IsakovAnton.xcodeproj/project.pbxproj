@@ -13,11 +13,13 @@
 		31E170A72AAFA68F000A3805 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31E170A62AAFA68F000A3805 /* Assets.xcassets */; };
 		31E170AA2AAFA690000A3805 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31E170A82AAFA690000A3805 /* LaunchScreen.storyboard */; };
 		31E170B92AB89A70000A3805 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31E170B72AB89A70000A3805 /* Model.xcdatamodeld */; };
-		31E170BC2AB978C6000A3805 /* Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170BA2AB978C6000A3805 /* Entity+CoreDataClass.swift */; };
-		31E170BD2AB978C6000A3805 /* Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170BB2AB978C6000A3805 /* Entity+CoreDataProperties.swift */; };
 		31E170BF2AB98D62000A3805 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170BE2AB98D62000A3805 /* ProfileViewController.swift */; };
 		31E170C12AB9903A000A3805 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C02AB9903A000A3805 /* Models.swift */; };
 		31E170C32AB9A0C3000A3805 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C22AB9A0C3000A3805 /* CoreData.swift */; };
+		31E170C52AB9C45C000A3805 /* CellFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C42AB9C45C000A3805 /* CellFirstView.swift */; };
+		31E170C72ABA119A000A3805 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C62ABA119A000A3805 /* NameTableViewCell.swift */; };
+		31E170CA2ABA14DE000A3805 /* BirthDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C92ABA14DE000A3805 /* BirthDateTableViewCell.swift */; };
+		31E170CC2ABA164F000A3805 /* GenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170CB2ABA164F000A3805 /* GenderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +31,13 @@
 		31E170A92AAFA690000A3805 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31E170AB2AAFA690000A3805 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31E170B82AB89A70000A3805 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		31E170BA2AB978C6000A3805 /* Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		31E170BB2AB978C6000A3805 /* Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		31E170BE2AB98D62000A3805 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		31E170C02AB9903A000A3805 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		31E170C22AB9A0C3000A3805 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		31E170C42AB9C45C000A3805 /* CellFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFirstView.swift; sourceTree = "<group>"; };
+		31E170C62ABA119A000A3805 /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
+		31E170C92ABA14DE000A3805 /* BirthDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDateTableViewCell.swift; sourceTree = "<group>"; };
+		31E170CB2ABA164F000A3805 /* GenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,8 +54,6 @@
 		31E170912AAFA68C000A3805 = {
 			isa = PBXGroup;
 			children = (
-				31E170BA2AB978C6000A3805 /* Entity+CoreDataClass.swift */,
-				31E170BB2AB978C6000A3805 /* Entity+CoreDataProperties.swift */,
 				31E1709C2AAFA68D000A3805 /* iOS10-HW22 IsakovAnton */,
 				31E1709B2AAFA68D000A3805 /* Products */,
 			);
@@ -72,7 +74,9 @@
 				31E170A12AAFA68D000A3805 /* FirstScreenViewController.swift */,
 				31E170BE2AB98D62000A3805 /* ProfileViewController.swift */,
 				31E170C02AB9903A000A3805 /* Models.swift */,
+				31E170C82ABA11AA000A3805 /* Cells */,
 				31E170C22AB9A0C3000A3805 /* CoreData.swift */,
+				31E170B72AB89A70000A3805 /* Model.xcdatamodeld */,
 				31E170B52AB23B38000A3805 /* Resourses */,
 			);
 			path = "iOS10-HW22 IsakovAnton";
@@ -82,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				31E1709D2AAFA68D000A3805 /* AppDelegate.swift */,
-				31E170B72AB89A70000A3805 /* Model.xcdatamodeld */,
 				31E1709F2AAFA68D000A3805 /* SceneDelegate.swift */,
 			);
 			path = App;
@@ -104,6 +107,17 @@
 				31E170B42AB23B32000A3805 /* App */,
 			);
 			path = Sourses;
+			sourceTree = "<group>";
+		};
+		31E170C82ABA11AA000A3805 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				31E170C42AB9C45C000A3805 /* CellFirstView.swift */,
+				31E170C62ABA119A000A3805 /* NameTableViewCell.swift */,
+				31E170C92ABA14DE000A3805 /* BirthDateTableViewCell.swift */,
+				31E170CB2ABA164F000A3805 /* GenderTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,14 +190,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31E170BD2AB978C6000A3805 /* Entity+CoreDataProperties.swift in Sources */,
+				31E170CA2ABA14DE000A3805 /* BirthDateTableViewCell.swift in Sources */,
+				31E170C72ABA119A000A3805 /* NameTableViewCell.swift in Sources */,
 				31E170A22AAFA68D000A3805 /* FirstScreenViewController.swift in Sources */,
 				31E1709E2AAFA68D000A3805 /* AppDelegate.swift in Sources */,
 				31E170C12AB9903A000A3805 /* Models.swift in Sources */,
 				31E170C32AB9A0C3000A3805 /* CoreData.swift in Sources */,
 				31E170A02AAFA68D000A3805 /* SceneDelegate.swift in Sources */,
+				31E170CC2ABA164F000A3805 /* GenderTableViewCell.swift in Sources */,
 				31E170BF2AB98D62000A3805 /* ProfileViewController.swift in Sources */,
-				31E170BC2AB978C6000A3805 /* Entity+CoreDataClass.swift in Sources */,
+				31E170C52AB9C45C000A3805 /* CellFirstView.swift in Sources */,
 				31E170B92AB89A70000A3805 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
