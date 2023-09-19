@@ -1,7 +1,6 @@
 import Foundation
 import CoreData
 
-// Протокол для взаимодействия с вторым экраном
 protocol SecondScreenView: class {
     func displayProfileData(name: String, birthDate: Date, gender: Gender)
 }
@@ -60,8 +59,6 @@ class CoreDataManager {
     
     func saveProfileData(_ updatedProfileData: Profile) {
         let context = persistentContainer.viewContext
-        
-        // Сохраните контекст, чтобы сохранить изменения
         do {
             try context.save()
         } catch {
@@ -109,4 +106,3 @@ class SecondScreenPresenter {
         coreDataManager.saveProfileData(updatedProfileData)
     }
 }
-

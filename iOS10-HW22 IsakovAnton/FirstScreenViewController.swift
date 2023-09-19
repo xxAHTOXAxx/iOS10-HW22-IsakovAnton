@@ -106,7 +106,7 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let selectedName = data[indexPath.row]
+            //let selectedName = data[indexPath.row]
             data.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }

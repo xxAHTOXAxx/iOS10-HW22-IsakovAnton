@@ -99,13 +99,11 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func buttonTapped() {
-        // Получите данные из ячеек
         let updatedName = nameCell.nameLabel.text ?? ""
         let updatedBirthDate = birthDateCell.birthDatePicker.date
         let selectedGenderIndex = genderCell.genderSegmentedControl.selectedSegmentIndex
         let selectedGender = Gender(rawValue: selectedGenderIndex) ?? .unknown
         
-        // Создайте объект ProfileData и передайте его в презентер
         let updatedProfileData = ProfileData(name: updatedName, birthDate: updatedBirthDate, gender: selectedGender)
         presenter?.saveProfileData(updatedProfileData)
     }

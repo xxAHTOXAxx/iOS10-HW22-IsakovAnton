@@ -29,8 +29,4 @@ class GenderTableViewCell: UITableViewCell {
             genderSegmentedControl.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
         ])
     }
-
-//    func displayGender(gender: String) {
-//        genderSegmentedControl.text = "Пол: \(gender)"
-//    }
 }
