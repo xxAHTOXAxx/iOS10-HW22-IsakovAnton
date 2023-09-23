@@ -3,6 +3,8 @@ import UIKit
 
 class FirstScreenViewController: UIViewController {
     
+    
+    var presenter: MainViewOutput?
     var data: [String] = []
     var enteredText: String?
 
@@ -86,11 +88,6 @@ class FirstScreenViewController: UIViewController {
         }
 }
 
-protocol FirstScreenView: class {
-    func reloadData()
-    func updateTableView()
-}
-
 extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
@@ -106,7 +103,6 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            //let selectedName = data[indexPath.row]
             data.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
@@ -119,6 +115,26 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
         navigationController?.pushViewController(profileViewController, animated: true)
     }
 }
+
+extension FirstScreenViewController: MainViewInput {
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 class ProfilePresenter {
     weak var view: ProfileView?
@@ -135,3 +151,4 @@ class ProfilePresenter {
             profileData = data
         }
 }
+
