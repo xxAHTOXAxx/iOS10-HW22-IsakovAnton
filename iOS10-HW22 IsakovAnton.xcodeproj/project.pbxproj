@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		310CCF792ABF7BB300491CB4 /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310CCF782ABF7BB300491CB4 /* MainAssembly.swift */; };
 		310CCF7B2ABF7D9800491CB4 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310CCF7A2ABF7D9800491CB4 /* MainPresenter.swift */; };
+		310CCF812AC0AEAE00491CB4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310CCF802AC0AEAE00491CB4 /* ProfilePresenter.swift */; };
 		31E1709E2AAFA68D000A3805 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1709D2AAFA68D000A3805 /* AppDelegate.swift */; };
 		31E170A02AAFA68D000A3805 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1709F2AAFA68D000A3805 /* SceneDelegate.swift */; };
 		31E170A22AAFA68D000A3805 /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170A12AAFA68D000A3805 /* FirstScreenViewController.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		310CCF782ABF7BB300491CB4 /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		310CCF7A2ABF7D9800491CB4 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		310CCF802AC0AEAE00491CB4 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		31E1709A2AAFA68D000A3805 /* iOS10-HW22 IsakovAnton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS10-HW22 IsakovAnton.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31E1709D2AAFA68D000A3805 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31E1709F2AAFA68D000A3805 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		310CCF7E2ABF965800491CB4 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				310CCF802AC0AEAE00491CB4 /* ProfilePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				31E170A02AAFA68D000A3805 /* SceneDelegate.swift in Sources */,
 				310CCF792ABF7BB300491CB4 /* MainAssembly.swift in Sources */,
 				31E170CC2ABA164F000A3805 /* GenderTableViewCell.swift in Sources */,
+				310CCF812AC0AEAE00491CB4 /* ProfilePresenter.swift in Sources */,
 				31E170BF2AB98D62000A3805 /* ProfileViewController.swift in Sources */,
 				31E170C52AB9C45C000A3805 /* CellFirstView.swift in Sources */,
 				31E170B92AB89A70000A3805 /* Model.xcdatamodeld in Sources */,

@@ -9,9 +9,7 @@ protocol MainViewOutput {
     
 }
 
-
-
-class FirstScreenPresenter {
+class MainPresenter {
     
     var view: MainViewInput?
     var coreDataManager: CoreDataManager
@@ -32,6 +30,6 @@ class FirstScreenPresenter {
     }
 }
 
-extension FirstScreenPresenter: MainViewOutput {
+extension MainPresenter: MainViewOutput {
     
 }
