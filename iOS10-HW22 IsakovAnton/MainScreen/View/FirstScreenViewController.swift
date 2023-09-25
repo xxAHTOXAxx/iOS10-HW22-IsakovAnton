@@ -44,6 +44,7 @@ class FirstScreenViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
+        
     }
 
     private func setupUI() {

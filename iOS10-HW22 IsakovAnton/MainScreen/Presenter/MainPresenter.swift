@@ -33,3 +33,12 @@ class MainPresenter {
 extension MainPresenter: MainViewOutput {
     
 }
+
+extension MainPresenter {
+    
+    func loadUsers() {
+        let data = dataManager.fetchData()
+        view.updateEntireTable(with: data)
+    }
+    
+}

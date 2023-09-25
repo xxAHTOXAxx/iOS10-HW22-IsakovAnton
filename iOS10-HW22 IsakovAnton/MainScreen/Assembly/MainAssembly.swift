@@ -3,8 +3,8 @@ import Foundation
 class MainAssembly {
     class func configureModule() -> FirstScreenViewController {
         let view = FirstScreenViewController()
-        let presenter = MainPresenter(view: <#MainViewInput#>, coreDataManager: <#CoreDataManager#>)
-        view.presenter = presenter
+        let coreData = CoreDataManager()
+        let presenter = MainPresenter(view: view, coreDataManager: coreData)
         presenter.view = view
         return view
     }
