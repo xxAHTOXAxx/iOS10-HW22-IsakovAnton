@@ -1,4 +1,6 @@
 import Foundation
+import UIKit
+import CoreData
 
 protocol MainViewInput {
     func reloadData()
@@ -19,14 +21,13 @@ class MainPresenter {
         self.coreDataManager = coreDataManager
     }
     
-    func addDataToCoreData(text: String) {
-        coreDataManager.addData(text)
+    func addDataToCoreData(name: String, gender: Int16, birthDate: Date) {
+        coreDataManager.addUsers(name: name, gender: gender, birthDate: birthDate)
         view?.updateTableView()
     }
     
-    func deleteDataFromCoreData(at index: Int) {
-        coreDataManager.deleteData(at: index)
-        view?.updateTableView()
+    func deleteDataFromCoreData(user:Profile) {
+        coreDataManager.deleteUsers(user: user)
     }
 }
 
@@ -37,8 +38,15 @@ extension MainPresenter: MainViewOutput {
 extension MainPresenter {
     
     func loadUsers() {
-        let data = dataManager.fetchData()
-        view.updateEntireTable(with: data)
+        let data = coreDataManager.getUsers()
+        if let view = view {
+            view.updateTableView()
+        } else {
+            print("Ошибка: view не реализует протокол MainViewInput")
+        }
     }
     
 }
+
+
+

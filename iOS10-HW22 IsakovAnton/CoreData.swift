@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 import CoreData
 
 // Протокол для взаимодействия с вторым экраном
@@ -7,77 +8,42 @@ protocol SecondScreenView: class {
 }
 
 class CoreDataManager {
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "YourDataModelName")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error {
-                fatalError("Unresolved error \(error), \(error.localizedDescription)")
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        // Загрузка данных
+        func getUsers() -> [Profile] {
+            do {
+                let fetchRequest = NSFetchRequest<Profile>(entityName: "Profile")
+                let objects = try context.fetch(fetchRequest)
+                return objects
+            } catch {
+                print("Ошибка при загрузке данных: \(error.localizedDescription)")
+                return []
             }
-        })
-        return container
-    }()
-    
-    func addData(_ text: String) {
-        let context = persistentContainer.viewContext
-        let data = CoreDataModel(context: context)
-        data.text = text
-        
-        do {
-            try context.save()
-        } catch {
-            print("Error saving data: \(error)")
         }
-    }
-    
-    func deleteData(at index: Int) {
-        let context = persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<CoreDataModel> = CoreDataModel.fetchRequest()
         
-        do {
-            let objects = try context.fetch(fetchRequest)
-            context.delete(objects[index])
-            try context.save()
-        } catch {
-            print("Error deleting data: \(error)")
-        }
-    }
-    
-    func loadProfileData() -> Profile? {
-        let context = persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Profile> = Profile.fetchRequest()
-
-        do {
-            let profiles = try context.fetch(fetchRequest)
-            if let profile = profiles.first {
-                return profile
+        // Сохранение данных
+        func saveUsers() {
+            do {
+                try context.save()
+            } catch {
+                print("Ошибка при сохранении данных: \(error.localizedDescription)")
             }
-        } catch {
-            print("Error loading profile data: \(error)")
         }
-
-        return nil
-    }
-    
-    func saveProfileData(_ updatedProfileData: Profile) {
-        let context = persistentContainer.viewContext
         
-        // Сохраните контекст, чтобы сохранить изменения
-        do {
-            try context.save()
-        } catch {
-            print("Error saving profile data: \(error)")
+        // Добавление нового пользователя
+    func addUsers(name: String, gender: Int16, birthDate: Date) {
+            let newUser = Profile(context: context)
+            newUser.name = name
+            newUser.gender = gender
+            newUser.birthDate = birthDate
+            saveUsers()
+        }
+        
+        // Удаление пользователя
+        func deleteUsers(user: Profile) {
+            context.delete(user)
+            saveUsers()
         }
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
