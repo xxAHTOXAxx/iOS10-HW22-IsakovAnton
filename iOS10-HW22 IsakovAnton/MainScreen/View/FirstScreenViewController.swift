@@ -4,7 +4,7 @@ import UIKit
 class FirstScreenViewController: UIViewController {
     
     var presenter: MainViewOutput?
-    var data: [String] = []
+    var data: [Profile] = []
     var enteredText: String?
 
     let textField: UITextField = {
@@ -75,20 +75,11 @@ class FirstScreenViewController: UIViewController {
     
     @objc func addButtonTapped(_ sender: UIButton) {
         if let text = textField.text, !text.isEmpty {
-            enteredText = text
-            data.append(text)
+            let profile = Profile()
+            data.append(profile)
             textField.text = ""
             updateTableView()
         }
-        
-        
-        
-//        {
-//            enteredText = text
-//            data.append(text)
-//            textField.text = ""
-//            updateTableView()
-//        }
     }
     
     func updateTableView() {
@@ -103,7 +94,8 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = data[indexPath.row]
+        let profile = data[indexPath.row]
+        cell.textLabel?.text = profile.name
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = .byWordWrapping
         return cell
@@ -119,7 +111,7 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedName = data[indexPath.row]
         let profileViewController = ProfileViewController()
-        profileViewController.presenter?.initialProfileData.name = selectedName
+        profileViewController.presenter?.initialProfileData.name = selectedName.name
         navigationController?.pushViewController(profileViewController, animated: true)
     }
 }
