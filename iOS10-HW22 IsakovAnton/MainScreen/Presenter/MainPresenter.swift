@@ -36,7 +36,7 @@ extension MainPresenter: MainViewOutput {
 }
 
 extension MainPresenter {
-    
+
     func loadUsers() {
         let data = coreDataManager.getUsers()
         if let view = view {
@@ -45,7 +45,6 @@ extension MainPresenter {
             print("Ошибка: view не реализует протокол MainViewInput")
         }
     }
-    
 }
 
 

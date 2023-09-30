@@ -3,12 +3,10 @@ import UIKit
 
 class FirstScreenViewController: UIViewController {
     
-    
     var presenter: MainViewOutput?
     var data: [String] = []
     var enteredText: String?
 
-    
     let textField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Введите текст"
@@ -82,6 +80,15 @@ class FirstScreenViewController: UIViewController {
             textField.text = ""
             updateTableView()
         }
+        
+        
+        
+//        {
+//            enteredText = text
+//            data.append(text)
+//            textField.text = ""
+//            updateTableView()
+//        }
     }
     
     func updateTableView() {
@@ -126,30 +133,4 @@ extension FirstScreenViewController: MainViewInput {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-class ProfilePresenter {
-    weak var view: ProfileView?
-        var profileData: ProfileData
-        var initialProfileData: ProfileData
-
-        init(view: ProfileView, profileData: ProfileData, initialProfileData: ProfileData) {
-            self.view = view
-            self.profileData = profileData
-            self.initialProfileData = initialProfileData
-        }
-
-    func saveProfileData(_ data: ProfileData) {
-            profileData = data
-        }
-}
 

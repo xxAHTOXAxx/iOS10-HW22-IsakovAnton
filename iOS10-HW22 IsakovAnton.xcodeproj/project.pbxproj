@@ -80,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				31E170A12AAFA68D000A3805 /* FirstScreenViewController.swift */,
+				31E170C42AB9C45C000A3805 /* CellFirstView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -95,7 +96,6 @@
 		310CCF772ABF7B0500491CB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				31E170C42AB9C45C000A3805 /* CellFirstView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -113,6 +113,7 @@
 		310CCF7D2ABF964F00491CB4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				31E170C82ABA11AA000A3805 /* Cells */,
 				31E170BE2AB98D62000A3805 /* ProfileViewController.swift */,
 			);
 			path = View;
@@ -129,7 +130,6 @@
 		310CCF7F2ABF966200491CB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				31E170C82ABA11AA000A3805 /* Cells */,
 				31E170C02AB9903A000A3805 /* Models.swift */,
 			);
 			path = Model;
