@@ -5,9 +5,11 @@ import CoreData
 protocol MainViewInput {
     func reloadData()
     func updateTableView()
+    func updateProfile(name: Profile)
 }
 
 protocol MainViewOutput {
+    func saveProfile(name: String)
     
 }
 
@@ -26,19 +28,23 @@ class MainPresenter {
         view?.updateTableView()
     }
     
-    func deleteDataFromCoreData(user:Profile) {
+    func deleteDataFromCoreData(user: Profile) {
         coreDataManager.deleteUsers(user: user)
     }
 }
 
 extension MainPresenter: MainViewOutput {
-    
+
+    func saveProfile(name: String) {
+        var profile = coreDataManager.saveUser(name: name)
+        guard let profile = profile else { return }
+        view?.updateProfile(name: profile)
+    }
 }
 
 extension MainPresenter {
-
     func loadUsers() {
-        let data = coreDataManager.getUsers()
+        _ = coreDataManager.getUsers()
         if let view = view {
             view.updateTableView()
         } else {

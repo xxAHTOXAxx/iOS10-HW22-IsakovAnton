@@ -16,7 +16,7 @@ class SecondScreenPresenter {
 //    }
     
     func saveProfileData(_ updatedProfileData: Profile) {
-        coreDataManager.saveUsers()
+        coreDataManager.saveUser(name: updatedProfileData.name!)
     }
 }
 

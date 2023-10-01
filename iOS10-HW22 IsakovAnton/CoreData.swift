@@ -23,14 +23,19 @@ class CoreDataManager {
             }
         }
         
-        // Сохранение данных
-        func saveUsers() {
-            do {
-                try context.save()
-            } catch {
-                print("Ошибка при сохранении данных: \(error.localizedDescription)")
-            }
+    // Сохранение данных
+    func saveUser(name: String) -> Profile? {
+        let profileDescription: NSEntityDescription = NSEntityDescription.entity(forEntityName: "Profile", in: context)!
+        let profile = NSManagedObject(entity: profileDescription, insertInto: context) as? Profile
+        profile?.setValue(name, forKey: name)
+        do {
+            try context.save()
+            return profile
+        } catch {
+            print("Ошибка при сохранении данных: \(error.localizedDescription)")
+            return nil
         }
+    }
         
         // Добавление нового пользователя
     func addUsers(name: String, gender: Int16, birthDate: Date) {
@@ -38,12 +43,12 @@ class CoreDataManager {
             newUser.name = name
             newUser.gender = gender
             newUser.birthDate = birthDate
-            saveUsers()
+            //saveUsers()
         }
         
         // Удаление пользователя
         func deleteUsers(user: Profile) {
             context.delete(user)
-            saveUsers()
+            saveUser(name: user.name!)
         }
     }

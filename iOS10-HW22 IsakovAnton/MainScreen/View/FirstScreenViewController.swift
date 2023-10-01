@@ -74,12 +74,8 @@ class FirstScreenViewController: UIViewController {
     }
     
     @objc func addButtonTapped(_ sender: UIButton) {
-        if let text = textField.text, !text.isEmpty {
-            let profile = Profile()
-            data.append(profile)
-            textField.text = ""
-            updateTableView()
-        }
+        guard let name = textField.text, !name.isEmpty else { return }
+        presenter?.saveProfile(name: name)
     }
     
     func updateTableView() {
@@ -111,17 +107,20 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedName = data[indexPath.row]
         let profileViewController = ProfileViewController()
-        profileViewController.presenter?.initialProfileData.name = selectedName.name
+        profileViewController.presenter?.initialProfileData.name = selectedName.name ?? "Имя не было найдено"
         navigationController?.pushViewController(profileViewController, animated: true)
     }
 }
 
 extension FirstScreenViewController: MainViewInput {
+    func updateProfile(name: Profile) {
+        data.append(name)
+        reloadData()
+    }
+    
     func reloadData() {
         tableView.reloadData()
     }
-    
-    
 }
 
 
