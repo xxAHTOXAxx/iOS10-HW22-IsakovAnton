@@ -2,20 +2,20 @@ import Foundation
 import UIKit
 import CoreData
 
-protocol MainViewInput {
+protocol MainViewInput: AnyObject {
     func reloadData()
     func updateTableView()
     func updateProfile(name: Profile)
 }
 
-protocol MainViewOutput {
+protocol MainViewOutput: AnyObject {
     func saveProfile(name: String)
     
 }
 
 class MainPresenter {
     
-    var view: MainViewInput?
+    private weak var view: MainViewInput?
     var coreDataManager: CoreDataManager
     
     init(view: MainViewInput, coreDataManager: CoreDataManager) {
@@ -36,7 +36,7 @@ class MainPresenter {
 extension MainPresenter: MainViewOutput {
 
     func saveProfile(name: String) {
-        var profile = coreDataManager.saveUser(name: name)
+        let profile = coreDataManager.saveUser(name: name)
         guard let profile = profile else { return }
         view?.updateProfile(name: profile)
     }

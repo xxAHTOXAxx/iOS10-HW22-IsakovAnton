@@ -42,7 +42,7 @@ class FirstScreenViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
-        
+        //presenter = MainPresenter(view: self, coreDataManager: CoreDataManager())
     }
 
     private func setupUI() {

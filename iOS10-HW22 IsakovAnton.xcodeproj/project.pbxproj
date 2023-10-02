@@ -60,8 +60,8 @@
 		310CCF732ABF7A7B00491CB4 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				310CCF752ABF7AF400491CB4 /* View */,
 				310CCF742ABF7AD100491CB4 /* Assembly */,
+				310CCF752ABF7AF400491CB4 /* View */,
 				310CCF772ABF7B0500491CB4 /* Model */,
 				310CCF762ABF7AFB00491CB4 /* Presenter */,
 			);
