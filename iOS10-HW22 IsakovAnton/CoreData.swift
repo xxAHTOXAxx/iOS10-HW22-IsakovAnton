@@ -3,31 +3,31 @@ import UIKit
 import CoreData
 
 // Протокол для взаимодействия с вторым экраном
-protocol SecondScreenView: class {
+protocol SecondScreenView: AnyObject {
     func displayProfileData(name: String, birthDate: Date, gender: Gender)
 }
 
 class CoreDataManager {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        
-        // Загрузка данных
-        func getUsers() -> [Profile] {
-            do {
-                let fetchRequest = NSFetchRequest<Profile>(entityName: "Profile")
-                let objects = try context.fetch(fetchRequest)
-                return objects
-            } catch {
-                print("Ошибка при загрузке данных: \(error.localizedDescription)")
-                return []
-            }
+    
+    // Загрузка данных
+    func getUsers() -> [Profile] {
+        do {
+            let fetchRequest = NSFetchRequest<Profile>(entityName: "Profile")
+            let objects = try context.fetch(fetchRequest)
+            return objects
+        } catch {
+            print("Ошибка при загрузке данных: \(error.localizedDescription)")
+            return []
         }
+    }
         
     // Сохранение данных
     func saveUser(name: String) -> Profile? {
         let profileDescription: NSEntityDescription = NSEntityDescription.entity(forEntityName: "Profile", in: context)!
         let profile = NSManagedObject(entity: profileDescription, insertInto: context) as? Profile
-        profile?.setValue(name, forKey: name)
+        profile?.setValue(name, forKey: "name")
         do {
             try context.save()
             return profile

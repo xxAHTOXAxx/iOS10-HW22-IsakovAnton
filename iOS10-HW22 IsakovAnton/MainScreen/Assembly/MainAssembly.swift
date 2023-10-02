@@ -1,11 +1,11 @@
 import Foundation
 
 class MainAssembly {
-    class func configureModule() -> FirstScreenViewController {
+    static func configureModule() -> FirstScreenViewController {
         let view = FirstScreenViewController()
         let coreData = CoreDataManager()
-       // let presenter = MainPresenter(view: view, coreDataManager: coreData)
-        view.presenter = MainPresenter(view: view, coreDataManager: coreData)
+        let presenter = MainPresenter(view: view, coreDataManager: coreData)
+        view.presenter = presenter
         return view
     }
 }

@@ -113,8 +113,8 @@
 		310CCF7D2ABF964F00491CB4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				31E170C82ABA11AA000A3805 /* Cells */,
 				31E170BE2AB98D62000A3805 /* ProfileViewController.swift */,
+				31E170C82ABA11AA000A3805 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";

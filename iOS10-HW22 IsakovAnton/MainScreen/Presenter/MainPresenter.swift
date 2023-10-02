@@ -10,7 +10,7 @@ protocol MainViewInput: AnyObject {
 
 protocol MainViewOutput: AnyObject {
     func saveProfile(name: String)
-    
+    func loadUsers()
 }
 
 class MainPresenter {

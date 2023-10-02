@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  iOS10-HW22 IsakovAnton
-//
-//  Created by Антон Исаков on 11.09.2023.
-//
-
 import UIKit
 import CoreData
 
@@ -31,11 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     lazy var persistentContainer: NSPersistentContainer = {
-
-        let container = NSPersistentContainer(name: "Profile")
+        let container = NSPersistentContainer(name: "Model")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error {
-
                 fatalError("Unresolved error, \((error as NSError).userInfo)")
             }
         })

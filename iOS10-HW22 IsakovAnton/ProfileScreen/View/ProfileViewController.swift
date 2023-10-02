@@ -1,30 +1,8 @@
-
-//extension ProfileViewController: ProfileView {
-//    func displayProfileData(name: String, birthDate: Date, gender: Gender) {
-//        // Реализация отображения данных в вашем интерфейсе
-//        nameLabel.text = name
-//        datePicker.date = birthDate
-//        genderSegmentedControl.selectedSegmentIndex = gender.rawValue
-//    }
-//
-//    func enableEditingMode() {
-//        // Реализация включения режима редактирования
-//        nameLabel.isUserInteractionEnabled = true
-//        datePicker.isUserInteractionEnabled = true
-//        genderSegmentedControl.isUserInteractionEnabled = true
-//    }
-//
-//    func disableEditingMode() {
-//        // Реализация выключения режима редактирования
-//        nameLabel.isUserInteractionEnabled = false
-//        datePicker.isUserInteractionEnabled = false
-//        genderSegmentedControl.isUserInteractionEnabled = false
-//    }
-//}
-
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
+    
     var presenter: ProfilePresenter?
     var profileData: ProfileData?
     var initialProfileData: ProfileData = ProfileData(name: "Имя по умолчанию", birthDate: Date(), gender: .unknown)
@@ -66,7 +44,7 @@ class ProfileViewController: UIViewController {
     }
 
     private func setupUI() {
-        view.addSubview(contentView) // Добавьте contentView в view
+        view.addSubview(contentView)
             contentView.addSubview(tableView)
             contentView.addSubview(saveButton)
         
@@ -103,13 +81,11 @@ class ProfileViewController: UIViewController {
         let updatedBirthDate = birthDateCell.birthDatePicker.date
         let selectedGenderIndex = genderCell.genderSegmentedControl.selectedSegmentIndex
         let selectedGender = Gender(rawValue: selectedGenderIndex) ?? .unknown
-        
         let updatedProfileData = ProfileData(name: updatedName, birthDate: updatedBirthDate, gender: selectedGender)
         presenter?.saveProfileData(updatedProfileData)
     }
 
 }
-
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -122,20 +98,20 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath) as! NameTableViewCell
-            cell.displayProfileName(name: profileData?.name)
-            return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath) as? NameTableViewCell
+            cell?.displayProfileName(name: profileData?.name)
+            return cell ?? NameTableViewCell()
         } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "birthDateCell", for: indexPath) as! BirthDateTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "birthDateCell", for: indexPath) as? BirthDateTableViewCell
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd.MM.yyyy"
-            let birthDateString = dateFormatter.string(from: initialProfileData.birthDate)
+            _ = dateFormatter.string(from: initialProfileData.birthDate)
             //cell.displayBirthDate(date: birthDateString)
-            return cell
+            return cell ?? BirthDateTableViewCell()
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "genderCell", for: indexPath) as! GenderTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "genderCell", for: indexPath) as? GenderTableViewCell
             //cell.displayGender(gender: initialProfileData.gender.description)
-            return cell
+            return cell ?? GenderTableViewCell()
         }
     }
 }
