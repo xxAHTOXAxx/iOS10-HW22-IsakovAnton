@@ -6,6 +6,7 @@ protocol MainViewInput: AnyObject {
     func reloadData()
     func updateTableView()
     func updateProfile(name: Profile)
+    func updateView(array: [Profile])
 }
 
 protocol MainViewOutput: AnyObject {
@@ -40,18 +41,10 @@ extension MainPresenter: MainViewOutput {
         guard let profile = profile else { return }
         view?.updateProfile(name: profile)
     }
-}
-
-extension MainPresenter {
+    
     func loadUsers() {
-        _ = coreDataManager.getUsers()
-        if let view = view {
-            view.updateTableView()
-        } else {
-            print("Ошибка: view не реализует протокол MainViewInput")
-        }
+        let usersArray = coreDataManager.getUsers()
+        view?.updateView(array: usersArray)
     }
 }
-
-
 

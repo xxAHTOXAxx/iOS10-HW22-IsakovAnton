@@ -2,8 +2,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    
-    var presenter: ProfilePresenter?
+    var presenter: ProfileViewOutput?
     var profileData: ProfileData?
     var initialProfileData: ProfileData = ProfileData(name: "Имя по умолчанию", birthDate: Date(), gender: .unknown)
     var enteredText: String?
@@ -18,7 +17,12 @@ class ProfileViewController: UIViewController {
             return view
         }()
     
-    let tableView: UITableView = {
+    lazy var tableView: UITableView = {
+        tableView.register(NameTableViewCell.self, forCellReuseIdentifier: "nameCell")
+        tableView.register(BirthDateTableViewCell.self, forCellReuseIdentifier: "birthDateCell")
+        tableView.register(GenderTableViewCell.self, forCellReuseIdentifier: "genderCell")
+        tableView.delegate = self
+        tableView.dataSource = self
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -68,12 +72,7 @@ class ProfileViewController: UIViewController {
             saveButton.heightAnchor.constraint(equalToConstant: 50)
             
         ])
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(NameTableViewCell.self, forCellReuseIdentifier: "nameCell")
-        tableView.register(BirthDateTableViewCell.self, forCellReuseIdentifier: "birthDateCell")
-        tableView.register(GenderTableViewCell.self, forCellReuseIdentifier: "genderCell")
+          
     }
     
     @objc func buttonTapped() {
@@ -82,7 +81,7 @@ class ProfileViewController: UIViewController {
         let selectedGenderIndex = genderCell.genderSegmentedControl.selectedSegmentIndex
         let selectedGender = Gender(rawValue: selectedGenderIndex) ?? .unknown
         let updatedProfileData = ProfileData(name: updatedName, birthDate: updatedBirthDate, gender: selectedGender)
-        presenter?.saveProfileData(updatedProfileData)
+       // presenter?.saveProfileData(updatedProfileData)
     }
 
 }

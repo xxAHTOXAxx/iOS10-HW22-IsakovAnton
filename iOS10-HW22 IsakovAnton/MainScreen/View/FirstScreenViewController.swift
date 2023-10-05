@@ -107,7 +107,6 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedName = data[indexPath.row]
         let profileViewController = ProfileViewController()
-        profileViewController.presenter?.initialProfileData.name = selectedName.name ?? "Имя не было найдено"
         navigationController?.pushViewController(profileViewController, animated: true)
     }
 }
@@ -121,6 +120,12 @@ extension FirstScreenViewController: MainViewInput {
     func reloadData() {
         tableView.reloadData()
     }
+    
+    func updateView(array: [Profile]) {
+        data = array
+        reloadData()
+    }
+    
 }
 
 
