@@ -47,8 +47,15 @@ class CoreDataManager {
         }
         
         // Удаление пользователя
-        func deleteUsers(user: Profile) {
-            context.delete(user)
-            saveUser(name: user.name!)
+    func deleteUsers(user: Profile) -> Bool {
+        context.delete(user)
+        do {
+            try context.save() // Сохраняем изменения после удаления пользователя
+            return true
+        } catch {
+            // Обрабатываем ошибку, например, регистрируем ее или показываем предупреждение пользователю
+            print("Ошибка при удалении пользователя: \(error)")
+            return false
         }
     }
+}

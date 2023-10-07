@@ -96,13 +96,20 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
         cell.textLabel?.lineBreakMode = .byWordWrapping
         return cell
     }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            data.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let user = data[indexPath.row]
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, completion) in
+            self?.presenter?.deleteDataFromCoreData(user: user)
+            completion(true)
         }
+        
+        deleteAction.backgroundColor = .red 
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
     }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedName = data[indexPath.row]
@@ -112,6 +119,7 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 extension FirstScreenViewController: MainViewInput {
+   
     func updateProfile(name: Profile) {
         data.append(name)
         reloadData()
@@ -125,7 +133,6 @@ extension FirstScreenViewController: MainViewInput {
         data = array
         reloadData()
     }
-    
 }
 
 

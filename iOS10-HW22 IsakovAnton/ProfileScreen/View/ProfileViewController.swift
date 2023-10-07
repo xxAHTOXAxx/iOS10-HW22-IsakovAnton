@@ -10,7 +10,6 @@ class ProfileViewController: UIViewController {
     let birthDateCell = BirthDateTableViewCell()
     let genderCell = GenderTableViewCell()
 
-
     let contentView: UIView = {
             let view = UIView()
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -18,12 +17,14 @@ class ProfileViewController: UIViewController {
         }()
     
     lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(NameTableViewCell.self, forCellReuseIdentifier: "nameCell")
         tableView.register(BirthDateTableViewCell.self, forCellReuseIdentifier: "birthDateCell")
         tableView.register(GenderTableViewCell.self, forCellReuseIdentifier: "genderCell")
         tableView.delegate = self
         tableView.dataSource = self
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44 // Установите оценочную высоту
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -40,11 +41,43 @@ class ProfileViewController: UIViewController {
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return button
     }()
+    
+    private func setupNavigationBar() {
+            // Создайте кнопку "Edit" и добавьте ее в навигационный бар
+            let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped))
+            navigationItem.rightBarButtonItem = editButton
+        }
 
+        @objc func editButtonTapped() {
+            // Обработчик нажатия кнопки "Edit"
+            if isEditing {
+                // Если уже в режиме редактирования, завершите его
+                setEditing(false, animated: true)
+                navigationItem.rightBarButtonItem?.title = "Edit"
+                // В этом месте вы можете сохранить изменения профиля
+            } else {
+                // Включите режим редактирования
+                setEditing(true, animated: true)
+                navigationItem.rightBarButtonItem?.title = "Done"
+            }
+        }
+
+    override func setEditing(_ editing: Bool, animated: Bool) {
+           super.setEditing(editing, animated: animated)
+
+           // Включите или отключите редактирование полей профиля в зависимости от значения `editing`
+           nameCell.nameLabel.isEnabled = editing
+           birthDateCell.birthDatePicker.isEnabled = editing
+           genderCell.genderSegmentedControl.isEnabled = editing
+
+           // Другие действия, которые вы хотите выполнить при входе/выходе из режима редактирования
+       }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
+        setupNavigationBar()
     }
 
     private func setupUI() {
@@ -72,7 +105,6 @@ class ProfileViewController: UIViewController {
             saveButton.heightAnchor.constraint(equalToConstant: 50)
             
         ])
-          
     }
     
     @objc func buttonTapped() {
@@ -81,9 +113,7 @@ class ProfileViewController: UIViewController {
         let selectedGenderIndex = genderCell.genderSegmentedControl.selectedSegmentIndex
         let selectedGender = Gender(rawValue: selectedGenderIndex) ?? .unknown
         let updatedProfileData = ProfileData(name: updatedName, birthDate: updatedBirthDate, gender: selectedGender)
-       // presenter?.saveProfileData(updatedProfileData)
     }
-
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -105,11 +135,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd.MM.yyyy"
             _ = dateFormatter.string(from: initialProfileData.birthDate)
-            //cell.displayBirthDate(date: birthDateString)
             return cell ?? BirthDateTableViewCell()
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "genderCell", for: indexPath) as? GenderTableViewCell
-            //cell.displayGender(gender: initialProfileData.gender.description)
             return cell ?? GenderTableViewCell()
         }
     }

@@ -12,6 +12,7 @@ protocol MainViewInput: AnyObject {
 protocol MainViewOutput: AnyObject {
     func saveProfile(name: String)
     func loadUsers()
+    func deleteDataFromCoreData(user: Profile)
 }
 
 class MainPresenter {
@@ -28,9 +29,13 @@ class MainPresenter {
         coreDataManager.addUsers(name: name, gender: gender, birthDate: birthDate)
         view?.updateTableView()
     }
-    
     func deleteDataFromCoreData(user: Profile) {
-        coreDataManager.deleteUsers(user: user)
+        let isSuccess = coreDataManager.deleteUsers(user: user)
+           if isSuccess {
+               view?.updateView(array: coreDataManager.getUsers())
+           } else {
+               // Обработка случая, когда удаление не удалось
+           }
     }
 }
 
@@ -47,4 +52,3 @@ extension MainPresenter: MainViewOutput {
         view?.updateView(array: usersArray)
     }
 }
-

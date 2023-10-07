@@ -1,6 +1,6 @@
 import Foundation
 
-class SecondScreenPresenter {
+class ProfileScreenPresenter {
     weak var view: SecondScreenView?
     var coreDataManager: CoreDataManager
     
@@ -8,10 +8,6 @@ class SecondScreenPresenter {
         self.view = view
         self.coreDataManager = coreDataManager
     }
-    
-//    func saveProfileData(_ updatedProfileData: Profile) {
-//        coreDataManager.saveUser(name: updatedProfileData.name!)
-//    }
 }
 
 protocol ProfileViewInput: AnyObject {
