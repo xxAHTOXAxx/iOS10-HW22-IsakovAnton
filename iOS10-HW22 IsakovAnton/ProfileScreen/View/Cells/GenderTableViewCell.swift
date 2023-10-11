@@ -4,9 +4,10 @@ import UIKit
 
 class GenderTableViewCell: UITableViewCell {
     
-    let genderSegmentedControl: UISegmentedControl = {
+     let genderSegmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: ["Мужской", "Женский"])
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.isUserInteractionEnabled = false
         return segmentedControl
     }()
     

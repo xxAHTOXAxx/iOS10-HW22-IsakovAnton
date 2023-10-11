@@ -1,6 +1,6 @@
 import Foundation
 
-struct ProfileData {
+struct ProfileModel {
     var name: String
     var birthDate: Date
     var gender: Gender

@@ -1,14 +1,6 @@
 import Foundation
-
-class ProfileScreenPresenter {
-    weak var view: SecondScreenView?
-    var coreDataManager: CoreDataManager
-    
-    init(view: SecondScreenView, coreDataManager: CoreDataManager) {
-        self.view = view
-        self.coreDataManager = coreDataManager
-    }
-}
+import UIKit
+import CoreData
 
 protocol ProfileViewInput: AnyObject {
     
@@ -19,17 +11,17 @@ protocol ProfileViewOutput: AnyObject {
 }
 
 class ProfilePresenter {
-    weak var view: ProfileView?
-    var profileData: ProfileData
-    var initialProfileData: ProfileData
-    
-    init(view: ProfileView, profileData: ProfileData, initialProfileData: ProfileData) {
+    private weak var view: ProfileViewInput?
+    var coreDataManager: CoreDataManager
+    var profileModel: Profile
+   
+    init(view: ProfileViewInput, coreDataManager: CoreDataManager, profileModel: Profile) {
         self.view = view
-        self.profileData = profileData
-        self.initialProfileData = initialProfileData
+        self.coreDataManager = coreDataManager
+        self.profileModel = profileModel
     }
-    
-    func saveProfileData(_ data: ProfileData) {
-        profileData = data
-    }
+}
+
+extension ProfilePresenter: ProfileViewOutput {
+
 }

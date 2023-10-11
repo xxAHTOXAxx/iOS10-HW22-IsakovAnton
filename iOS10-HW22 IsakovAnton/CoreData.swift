@@ -2,11 +2,6 @@ import Foundation
 import UIKit
 import CoreData
 
-// Протокол для взаимодействия с вторым экраном
-protocol SecondScreenView: AnyObject {
-    func displayProfileData(name: String, birthDate: Date, gender: Gender)
-}
-
 class CoreDataManager {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -22,7 +17,7 @@ class CoreDataManager {
             return []
         }
     }
-        
+    
     // Сохранение данных
     func saveUser(name: String) -> Profile? {
         let profileDescription: NSEntityDescription = NSEntityDescription.entity(forEntityName: "Profile", in: context)!
@@ -36,17 +31,16 @@ class CoreDataManager {
             return nil
         }
     }
-        
-        // Добавление нового пользователя
+    
+    // Добавление нового пользователя
     func addUsers(name: String, gender: Int16, birthDate: Date) {
-            let newUser = Profile(context: context)
-            newUser.name = name
-            newUser.gender = gender
-            newUser.birthDate = birthDate
-            //saveUsers()
-        }
-        
-        // Удаление пользователя
+        let newUser = Profile(context: context)
+        newUser.name = name
+        newUser.gender = gender
+        newUser.birthDate = birthDate
+    }
+    
+    // Удаление пользователя
     func deleteUsers(user: Profile) -> Bool {
         context.delete(user)
         do {

@@ -10,6 +10,7 @@
 		310CCF792ABF7BB300491CB4 /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310CCF782ABF7BB300491CB4 /* MainAssembly.swift */; };
 		310CCF7B2ABF7D9800491CB4 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310CCF7A2ABF7D9800491CB4 /* MainPresenter.swift */; };
 		310CCF812AC0AEAE00491CB4 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310CCF802AC0AEAE00491CB4 /* ProfilePresenter.swift */; };
+		313C96272AD5D54700F67FEB /* ProfileAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313C96262AD5D54700F67FEB /* ProfileAssembly.swift */; };
 		31E1709E2AAFA68D000A3805 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1709D2AAFA68D000A3805 /* AppDelegate.swift */; };
 		31E170A02AAFA68D000A3805 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E1709F2AAFA68D000A3805 /* SceneDelegate.swift */; };
 		31E170A22AAFA68D000A3805 /* FirstScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170A12AAFA68D000A3805 /* FirstScreenViewController.swift */; };
@@ -29,6 +30,7 @@
 		310CCF782ABF7BB300491CB4 /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		310CCF7A2ABF7D9800491CB4 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		310CCF802AC0AEAE00491CB4 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		313C96262AD5D54700F67FEB /* ProfileAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAssembly.swift; sourceTree = "<group>"; };
 		31E1709A2AAFA68D000A3805 /* iOS10-HW22 IsakovAnton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS10-HW22 IsakovAnton.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31E1709D2AAFA68D000A3805 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31E1709F2AAFA68D000A3805 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,9 +105,10 @@
 		310CCF7C2ABF962B00491CB4 /* ProfileScreen */ = {
 			isa = PBXGroup;
 			children = (
+				313C96252AD5D51C00F67FEB /* Assembly */,
 				310CCF7F2ABF966200491CB4 /* Model */,
-				310CCF7E2ABF965800491CB4 /* Presenter */,
 				310CCF7D2ABF964F00491CB4 /* View */,
+				310CCF7E2ABF965800491CB4 /* Presenter */,
 			);
 			path = ProfileScreen;
 			sourceTree = "<group>";
@@ -133,6 +136,14 @@
 				31E170C02AB9903A000A3805 /* Models.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		313C96252AD5D51C00F67FEB /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				313C96262AD5D54700F67FEB /* ProfileAssembly.swift */,
+			);
+			path = Assembly;
 			sourceTree = "<group>";
 		};
 		31E170912AAFA68C000A3805 = {
@@ -276,6 +287,7 @@
 				31E170A22AAFA68D000A3805 /* FirstScreenViewController.swift in Sources */,
 				31E1709E2AAFA68D000A3805 /* AppDelegate.swift in Sources */,
 				31E170C12AB9903A000A3805 /* Models.swift in Sources */,
+				313C96272AD5D54700F67FEB /* ProfileAssembly.swift in Sources */,
 				31E170C32AB9A0C3000A3805 /* CoreData.swift in Sources */,
 				310CCF7B2ABF7D9800491CB4 /* MainPresenter.swift in Sources */,
 				31E170A02AAFA68D000A3805 /* SceneDelegate.swift in Sources */,

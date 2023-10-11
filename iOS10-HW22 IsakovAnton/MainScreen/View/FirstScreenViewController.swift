@@ -113,7 +113,7 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedName = data[indexPath.row]
-        let profileViewController = ProfileViewController()
+        let profileViewController = ProfileAssembly.configureModule(user: selectedName)
         navigationController?.pushViewController(profileViewController, animated: true)
     }
 }

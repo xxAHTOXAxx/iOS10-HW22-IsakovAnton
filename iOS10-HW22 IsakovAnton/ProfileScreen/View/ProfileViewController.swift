@@ -3,8 +3,8 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     var presenter: ProfileViewOutput?
-    var profileData: ProfileData?
-    var initialProfileData: ProfileData = ProfileData(name: "Имя по умолчанию", birthDate: Date(), gender: .unknown)
+    var profileData: ProfileModel?
+    var initialProfileData: ProfileModel = ProfileModel(name: "Имя по умолчанию", birthDate: Date(), gender: .unknown)
     var enteredText: String?
     let nameCell = NameTableViewCell()
     let birthDateCell = BirthDateTableViewCell()
@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44 // Установите оценочную высоту
+        tableView.estimatedRowHeight = 44
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController {
     }()
     
     private func setupNavigationBar() {
-            // Создайте кнопку "Edit" и добавьте ее в навигационный бар
+            
             let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped))
             navigationItem.rightBarButtonItem = editButton
         }
@@ -54,30 +54,24 @@ class ProfileViewController: UIViewController {
                 // Если уже в режиме редактирования, завершите его
                 setEditing(false, animated: true)
                 navigationItem.rightBarButtonItem?.title = "Edit"
+                birthDateCell.birthDatePicker.isUserInteractionEnabled = true
+                genderCell.genderSegmentedControl.isUserInteractionEnabled = true
                 // В этом месте вы можете сохранить изменения профиля
             } else {
                 // Включите режим редактирования
                 setEditing(true, animated: true)
                 navigationItem.rightBarButtonItem?.title = "Done"
+                
+                tableView.reloadData()
             }
         }
-
-    override func setEditing(_ editing: Bool, animated: Bool) {
-           super.setEditing(editing, animated: animated)
-
-           // Включите или отключите редактирование полей профиля в зависимости от значения `editing`
-           nameCell.nameLabel.isEnabled = editing
-           birthDateCell.birthDatePicker.isEnabled = editing
-           genderCell.genderSegmentedControl.isEnabled = editing
-
-           // Другие действия, которые вы хотите выполнить при входе/выходе из режима редактирования
-       }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
         setupNavigationBar()
+        
     }
 
     private func setupUI() {
@@ -112,7 +106,7 @@ class ProfileViewController: UIViewController {
         let updatedBirthDate = birthDateCell.birthDatePicker.date
         let selectedGenderIndex = genderCell.genderSegmentedControl.selectedSegmentIndex
         let selectedGender = Gender(rawValue: selectedGenderIndex) ?? .unknown
-        let updatedProfileData = ProfileData(name: updatedName, birthDate: updatedBirthDate, gender: selectedGender)
+        let updatedProfileData = ProfileModel(name: updatedName, birthDate: updatedBirthDate, gender: selectedGender)
     }
 }
 
@@ -143,8 +137,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-protocol ProfileView: ProfileViewController {
-    func displayProfileData(name: String, birthDate: Date, gender: Gender)
-    func enableEditingMode()
-    func disableEditingMode()
+extension ProfileViewController: ProfileViewInput {
+    
 }
