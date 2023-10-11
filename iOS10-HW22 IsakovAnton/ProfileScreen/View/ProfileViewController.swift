@@ -3,31 +3,6 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     var presenter: ProfileViewOutput?
-    var profileData: ProfileModel?
-    var initialProfileData: ProfileModel = ProfileModel(name: "Имя по умолчанию", birthDate: Date(), gender: .unknown)
-    var enteredText: String?
-    let nameCell = NameTableViewCell()
-    let birthDateCell = BirthDateTableViewCell()
-    let genderCell = GenderTableViewCell()
-
-    let contentView: UIView = {
-            let view = UIView()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            return view
-        }()
-    
-    lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
-        tableView.register(NameTableViewCell.self, forCellReuseIdentifier: "nameCell")
-        tableView.register(BirthDateTableViewCell.self, forCellReuseIdentifier: "birthDateCell")
-        tableView.register(GenderTableViewCell.self, forCellReuseIdentifier: "genderCell")
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
     
     let saveButton: UIButton = {
         let button = UIButton()
@@ -42,101 +17,103 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .clear
+        label.layer.borderColor = UIColor.black.cgColor
+        label.layer.borderWidth = 1.0
+        label.layer.cornerRadius = 5.0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let birthDatePicker: UIDatePicker = {
+       let datePicker = UIDatePicker()
+       datePicker.datePickerMode = .date
+       datePicker.translatesAutoresizingMaskIntoConstraints = false
+       datePicker.isUserInteractionEnabled = false
+       return datePicker
+   }()
+    
+    let genderSegmentedControl: UISegmentedControl = {
+       let segmentedControl = UISegmentedControl(items: ["Мужской", "Женский"])
+       segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+       segmentedControl.isUserInteractionEnabled = false
+       return segmentedControl
+   }()
+    
     private func setupNavigationBar() {
-            
-            let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editButtonTapped))
-            navigationItem.rightBarButtonItem = editButton
-        }
+        let editButtonTitle = isEditing ? "Done" : "Edit"
+        let editButton = UIBarButtonItem(title: editButtonTitle, style: .plain, target: self, action: #selector(editButtonTapped))
+        navigationItem.rightBarButtonItem = editButton
+    }
 
-        @objc func editButtonTapped() {
-            // Обработчик нажатия кнопки "Edit"
-            if isEditing {
-                // Если уже в режиме редактирования, завершите его
-                setEditing(false, animated: true)
-                navigationItem.rightBarButtonItem?.title = "Edit"
-                birthDateCell.birthDatePicker.isUserInteractionEnabled = true
-                genderCell.genderSegmentedControl.isUserInteractionEnabled = true
-                // В этом месте вы можете сохранить изменения профиля
-            } else {
-                // Включите режим редактирования
-                setEditing(true, animated: true)
-                navigationItem.rightBarButtonItem?.title = "Done"
-                
-                tableView.reloadData()
-            }
+    @objc func editButtonTapped() {
+        // Обработчик нажатия кнопки "Edit"
+        if isEditing {
+            setEditing(false, animated: true)
+            navigationItem.rightBarButtonItem?.title = "Edit"
+            birthDatePicker.isUserInteractionEnabled = false
+            genderSegmentedControl.isUserInteractionEnabled = false
+        } else {
+            setEditing(true, animated: true)
+            navigationItem.rightBarButtonItem?.title = "Done"
+            birthDatePicker.isUserInteractionEnabled = true
+            genderSegmentedControl.isUserInteractionEnabled = true
         }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
         setupNavigationBar()
-        
+        presenter?.getUser()
     }
 
     private func setupUI() {
-        view.addSubview(contentView)
-            contentView.addSubview(tableView)
-            contentView.addSubview(saveButton)
+        view.addSubview(nameLabel)
+        view.addSubview(birthDatePicker)
+        view.addSubview(genderSegmentedControl)
+        view.addSubview(saveButton)
         
-        let cells = [nameCell, birthDateCell, genderCell]
-        
+        let height = view.bounds.height // 812
+        let width = view.bounds.width // 375
+
         NSLayoutConstraint.activate([
-            
-            contentView.topAnchor.constraint(equalTo: view.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            tableView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor),
-            
-            saveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            saveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            saveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-            saveButton.heightAnchor.constraint(equalToConstant: 50)
-            
+            nameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: height * 0.2),
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nameLabel.heightAnchor.constraint(equalToConstant: 50),
+
+            birthDatePicker.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20),
+            birthDatePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+    
+            genderSegmentedControl.topAnchor.constraint(equalTo: birthDatePicker.bottomAnchor, constant: 20),
+            genderSegmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            genderSegmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+
+            saveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -height * 0.2),
+            saveButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
     
     @objc func buttonTapped() {
-        let updatedName = nameCell.nameLabel.text ?? ""
-        let updatedBirthDate = birthDateCell.birthDatePicker.date
-        let selectedGenderIndex = genderCell.genderSegmentedControl.selectedSegmentIndex
+        let updatedName = nameLabel.text ?? ""
+        let updatedBirthDate = birthDatePicker.date
+        let selectedGenderIndex = genderSegmentedControl.selectedSegmentIndex
         let selectedGender = Gender(rawValue: selectedGenderIndex) ?? .unknown
         let updatedProfileData = ProfileModel(name: updatedName, birthDate: updatedBirthDate, gender: selectedGender)
     }
 }
 
-extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath) as? NameTableViewCell
-            cell?.displayProfileName(name: profileData?.name)
-            return cell ?? NameTableViewCell()
-        } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "birthDateCell", for: indexPath) as? BirthDateTableViewCell
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy"
-            _ = dateFormatter.string(from: initialProfileData.birthDate)
-            return cell ?? BirthDateTableViewCell()
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "genderCell", for: indexPath) as? GenderTableViewCell
-            return cell ?? GenderTableViewCell()
-        }
-    }
-}
-
 extension ProfileViewController: ProfileViewInput {
     
+    func setUser(user: Profile) {
+        nameLabel.text = user.name
+        birthDatePicker.date = user.birthDate ?? Date()
+        genderSegmentedControl.selectedSegmentIndex = Int(user.gender)
+    }
 }

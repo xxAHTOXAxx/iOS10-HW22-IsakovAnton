@@ -21,9 +21,6 @@
 		31E170C12AB9903A000A3805 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C02AB9903A000A3805 /* Models.swift */; };
 		31E170C32AB9A0C3000A3805 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C22AB9A0C3000A3805 /* CoreData.swift */; };
 		31E170C52AB9C45C000A3805 /* CellFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C42AB9C45C000A3805 /* CellFirstView.swift */; };
-		31E170C72ABA119A000A3805 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C62ABA119A000A3805 /* NameTableViewCell.swift */; };
-		31E170CA2ABA14DE000A3805 /* BirthDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C92ABA14DE000A3805 /* BirthDateTableViewCell.swift */; };
-		31E170CC2ABA164F000A3805 /* GenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170CB2ABA164F000A3805 /* GenderTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,9 +40,6 @@
 		31E170C02AB9903A000A3805 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		31E170C22AB9A0C3000A3805 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		31E170C42AB9C45C000A3805 /* CellFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFirstView.swift; sourceTree = "<group>"; };
-		31E170C62ABA119A000A3805 /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
-		31E170C92ABA14DE000A3805 /* BirthDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDateTableViewCell.swift; sourceTree = "<group>"; };
-		31E170CB2ABA164F000A3805 /* GenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				31E170BE2AB98D62000A3805 /* ProfileViewController.swift */,
-				31E170C82ABA11AA000A3805 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,16 +195,6 @@
 			path = Sourses;
 			sourceTree = "<group>";
 		};
-		31E170C82ABA11AA000A3805 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				31E170C62ABA119A000A3805 /* NameTableViewCell.swift */,
-				31E170C92ABA14DE000A3805 /* BirthDateTableViewCell.swift */,
-				31E170CB2ABA164F000A3805 /* GenderTableViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -282,8 +265,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31E170CA2ABA14DE000A3805 /* BirthDateTableViewCell.swift in Sources */,
-				31E170C72ABA119A000A3805 /* NameTableViewCell.swift in Sources */,
 				31E170A22AAFA68D000A3805 /* FirstScreenViewController.swift in Sources */,
 				31E1709E2AAFA68D000A3805 /* AppDelegate.swift in Sources */,
 				31E170C12AB9903A000A3805 /* Models.swift in Sources */,
@@ -292,7 +273,6 @@
 				310CCF7B2ABF7D9800491CB4 /* MainPresenter.swift in Sources */,
 				31E170A02AAFA68D000A3805 /* SceneDelegate.swift in Sources */,
 				310CCF792ABF7BB300491CB4 /* MainAssembly.swift in Sources */,
-				31E170CC2ABA164F000A3805 /* GenderTableViewCell.swift in Sources */,
 				310CCF812AC0AEAE00491CB4 /* ProfilePresenter.swift in Sources */,
 				31E170BF2AB98D62000A3805 /* ProfileViewController.swift in Sources */,
 				31E170C52AB9C45C000A3805 /* CellFirstView.swift in Sources */,
