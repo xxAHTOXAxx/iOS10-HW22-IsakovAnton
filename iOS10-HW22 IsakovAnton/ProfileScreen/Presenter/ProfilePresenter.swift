@@ -7,7 +7,7 @@ protocol ProfileViewInput: AnyObject {
 }
 
 protocol ProfileViewOutput: AnyObject {
-    func saveProfile(name: String)
+    func saveProfile(user: Profile)
     func getUser()
 }
 
@@ -24,13 +24,13 @@ class ProfilePresenter {
 }
 
 extension ProfilePresenter: ProfileViewOutput {
+    
     func getUser() {
         view?.setUser(user: user)
     }
     
-
-    func saveProfile(name: String) {
-        let profile = coreDataManager.saveUser(name: name)
-        guard let profile = profile else { return }
+    func saveProfile(user: Profile) {
+        coreDataManager.saveUser(name: user.name ?? "Не удалось сохранить")
     }
 }
+

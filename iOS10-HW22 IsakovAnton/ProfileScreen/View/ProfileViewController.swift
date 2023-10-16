@@ -3,7 +3,12 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     var presenter: ProfileViewOutput?
+    var user: Profile?
+    var nameUser: String?
+    var gender: Int16?
+    var birthDate: Date?
     
+
     let saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("Сохранить", for: .normal)
@@ -17,14 +22,14 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .clear
-        label.layer.borderColor = UIColor.black.cgColor
-        label.layer.borderWidth = 1.0
-        label.layer.cornerRadius = 5.0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    let textField: UITextField = {
+        let textField = UITextField()
+        textField.backgroundColor = .clear
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderWidth = 1.0
+        textField.layer.cornerRadius = 5.0
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
     }()
     
     let birthDatePicker: UIDatePicker = {
@@ -72,7 +77,7 @@ class ProfileViewController: UIViewController {
     }
 
     private func setupUI() {
-        view.addSubview(nameLabel)
+        view.addSubview(textField)
         view.addSubview(birthDatePicker)
         view.addSubview(genderSegmentedControl)
         view.addSubview(saveButton)
@@ -81,12 +86,12 @@ class ProfileViewController: UIViewController {
         let width = view.bounds.width // 375
 
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: height * 0.2),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            nameLabel.heightAnchor.constraint(equalToConstant: 50),
+            textField.topAnchor.constraint(equalTo: view.topAnchor, constant: height * 0.2),
+            textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            textField.heightAnchor.constraint(equalToConstant: 50),
 
-            birthDatePicker.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20),
+            birthDatePicker.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 20),
             birthDatePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
     
             genderSegmentedControl.topAnchor.constraint(equalTo: birthDatePicker.bottomAnchor, constant: 20),
@@ -101,19 +106,22 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func buttonTapped() {
-        let updatedName = nameLabel.text ?? ""
-        let updatedBirthDate = birthDatePicker.date
-        let selectedGenderIndex = genderSegmentedControl.selectedSegmentIndex
-        let selectedGender = Gender(rawValue: selectedGenderIndex) ?? .unknown
-        let updatedProfileData = ProfileModel(name: updatedName, birthDate: updatedBirthDate, gender: selectedGender)
+        guard let name = textField.text, !name.isEmpty else { return }
+        user?.name = textField.text
+        user?.birthDate = birthDatePicker.date
+        user?.gender = Int16(genderSegmentedControl.selectedSegmentIndex)
     }
 }
 
 extension ProfileViewController: ProfileViewInput {
     
     func setUser(user: Profile) {
-        nameLabel.text = user.name
+        textField.text = user.name
         birthDatePicker.date = user.birthDate ?? Date()
         genderSegmentedControl.selectedSegmentIndex = Int(user.gender)
+        self.user = user
+        nameUser = user.name
+        birthDate = user.birthDate ?? Date()
+        gender = user.gender
     }
 }
