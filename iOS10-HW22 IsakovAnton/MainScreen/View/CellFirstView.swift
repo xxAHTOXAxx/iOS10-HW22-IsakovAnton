@@ -29,10 +29,8 @@ class CellFirstView: UITableViewCell {
     private func setupLayout() {
         
         NSLayoutConstraint.activate([
-            
             arrowImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             arrowImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            
         ])
     }
 }

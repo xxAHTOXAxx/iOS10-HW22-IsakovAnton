@@ -8,7 +8,6 @@ class ProfileViewController: UIViewController {
     var gender: Int16?
     var birthDate: Date?
     
-
     let saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("Сохранить", for: .normal)

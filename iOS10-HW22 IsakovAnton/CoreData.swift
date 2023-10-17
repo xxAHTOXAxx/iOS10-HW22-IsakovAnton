@@ -33,12 +33,13 @@ class CoreDataManager {
     }
     
     // Добавление нового пользователя
-    func addUsers(name: String, gender: Int16, birthDate: Date) {
-        let newUser = Profile(context: context)
-        newUser.name = name
-        newUser.gender = gender
-        newUser.birthDate = birthDate
-    }
+        func addUsers(name: String, gender: Int16, birthDate: Date) {
+            let newUser = Profile(context: context)
+            newUser.name = name
+            newUser.gender = gender
+            newUser.birthDate = birthDate
+        }
+
     
     // Удаление пользователя
     func deleteUsers(user: Profile) -> Bool {
@@ -52,4 +53,15 @@ class CoreDataManager {
             return false
         }
     }
+    
+    // Сохрание данных о пользователе
+    func saveProfile(clousure: (Bool) -> ()) {
+        do {
+            try context.save()
+        } catch {
+            print("Ошибка при сохранении данных: \(error.localizedDescription)")
+        }
+    }
 }
+
+
