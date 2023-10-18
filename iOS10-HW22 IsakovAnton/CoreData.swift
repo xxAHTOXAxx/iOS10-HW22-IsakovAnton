@@ -58,8 +58,10 @@ class CoreDataManager {
     func saveProfile(clousure: (Bool) -> ()) {
         do {
             try context.save()
+            clousure(true)
         } catch {
             print("Ошибка при сохранении данных: \(error.localizedDescription)")
+            clousure(false)
         }
     }
 }

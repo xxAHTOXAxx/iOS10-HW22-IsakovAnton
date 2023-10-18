@@ -109,6 +109,28 @@ class ProfileViewController: UIViewController {
         user?.name = textField.text
         user?.birthDate = birthDatePicker.date
         user?.gender = Int16(genderSegmentedControl.selectedSegmentIndex)
+        presenter?.saveProfile(clousure: { isSave in
+            if isSave {
+                nameUser = user?.name
+                birthDate = user?.birthDate ?? Date()
+                gender = user?.gender
+            } else {
+                user?.name = nameUser
+                user?.birthDate = birthDate
+                user?.gender = gender ?? Int16()
+                textField.text = user?.name
+                birthDatePicker.date = user?.birthDate ?? Date()
+                genderSegmentedControl.selectedSegmentIndex = Int(user?.gender ?? Int16())
+            }
+        })
+        
+        UIView.animate(withDuration: 0.2, animations: {
+                self.saveButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            }) { _ in
+                UIView.animate(withDuration: 0.2) {
+                    self.saveButton.transform = .identity
+                }
+            }
     }
 }
 

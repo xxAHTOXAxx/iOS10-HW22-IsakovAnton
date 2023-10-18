@@ -63,7 +63,7 @@ class FirstScreenViewController: UIViewController {
             addButton.rightAnchor.constraint (equalTo: view.rightAnchor, constant: -width * 0.13),
             addButton.heightAnchor.constraint(equalToConstant: 41),
 
-            tableView.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 20),
+            tableView.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: height * 0.02),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -76,6 +76,13 @@ class FirstScreenViewController: UIViewController {
     @objc func addButtonTapped(_ sender: UIButton) {
         guard let name = textField.text, !name.isEmpty else { return }
         presenter?.saveProfile(name: name)
+        UIView.animate(withDuration: 0.1, animations: {
+                self.addButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            }) { _ in
+                UIView.animate(withDuration: 0.1) {
+                    self.addButton.transform = .identity
+                }
+            }
     }
     
     func updateTableView() {
@@ -112,6 +119,7 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let selectedUser = data[indexPath.row]
         let profileViewController = ProfileAssembly.configureModule(user: selectedUser)
         navigationController?.pushViewController(profileViewController, animated: true)

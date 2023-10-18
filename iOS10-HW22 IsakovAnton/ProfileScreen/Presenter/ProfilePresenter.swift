@@ -30,7 +30,7 @@ extension ProfilePresenter: ProfileViewOutput {
     }
     
     func saveProfile(clousure: (Bool) -> ()) {
-       
+        coreDataManager.saveProfile(clousure: clousure)
     }
 }
 
