@@ -13,12 +13,11 @@ protocol ProfileViewOutput: AnyObject {
 
 class ProfilePresenter {
     private weak var view: ProfileViewInput?
-    var coreDataManager: CoreDataManager
-    var user: Profile
+    private let coreDataManager = CoreDataManager()
+    private var user: Profile
    
-    init(view: ProfileViewInput, coreDataManager: CoreDataManager, profileModel: Profile) {
+    init(view: ProfileViewInput, profileModel: Profile) {
         self.view = view
-        self.coreDataManager = coreDataManager
         self.user = profileModel
     }
 }

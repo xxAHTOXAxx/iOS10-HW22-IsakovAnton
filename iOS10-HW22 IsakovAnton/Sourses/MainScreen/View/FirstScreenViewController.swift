@@ -4,8 +4,7 @@ import UIKit
 class FirstScreenViewController: UIViewController {
     
     var presenter: MainViewOutput?
-    var data: [Profile] = []
-    var enteredText: String?
+    private var data: [Profile] = []
 
     let textField: UITextField = {
         let textField = UITextField()
@@ -84,10 +83,6 @@ class FirstScreenViewController: UIViewController {
                 }
             }
     }
-    
-    func updateTableView() {
-            tableView.reloadData()
-        }
 }
 
 extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource {
@@ -127,19 +122,15 @@ extension FirstScreenViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 extension FirstScreenViewController: MainViewInput {
-   
+    
     func updateProfile(name: Profile) {
         data.append(name)
-        reloadData()
-    }
-    
-    func reloadData() {
         tableView.reloadData()
     }
     
     func updateView(array: [Profile]) {
         data = array
-        reloadData()
+        tableView.reloadData()
     }
 }
 

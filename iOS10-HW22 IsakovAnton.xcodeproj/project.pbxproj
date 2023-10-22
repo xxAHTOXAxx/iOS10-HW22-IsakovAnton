@@ -18,7 +18,6 @@
 		31E170AA2AAFA690000A3805 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31E170A82AAFA690000A3805 /* LaunchScreen.storyboard */; };
 		31E170B92AB89A70000A3805 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31E170B72AB89A70000A3805 /* Model.xcdatamodeld */; };
 		31E170BF2AB98D62000A3805 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170BE2AB98D62000A3805 /* ProfileViewController.swift */; };
-		31E170C12AB9903A000A3805 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C02AB9903A000A3805 /* Models.swift */; };
 		31E170C32AB9A0C3000A3805 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C22AB9A0C3000A3805 /* CoreData.swift */; };
 		31E170C52AB9C45C000A3805 /* CellFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E170C42AB9C45C000A3805 /* CellFirstView.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +36,6 @@
 		31E170AB2AAFA690000A3805 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31E170B82AB89A70000A3805 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		31E170BE2AB98D62000A3805 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		31E170C02AB9903A000A3805 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		31E170C22AB9A0C3000A3805 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		31E170C42AB9C45C000A3805 /* CellFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellFirstView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,7 +124,6 @@
 		310CCF7F2ABF966200491CB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				31E170C02AB9903A000A3805 /* Models.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,8 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				31E170B62AB23B5E000A3805 /* Sourses */,
-				310CCF732ABF7A7B00491CB4 /* MainScreen */,
-				310CCF7C2ABF962B00491CB4 /* ProfileScreen */,
 				31E170C22AB9A0C3000A3805 /* CoreData.swift */,
 				31E170B72AB89A70000A3805 /* Model.xcdatamodeld */,
 				31E170B52AB23B38000A3805 /* Resourses */,
@@ -191,6 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				31E170B42AB23B32000A3805 /* App */,
+				310CCF732ABF7A7B00491CB4 /* MainScreen */,
+				310CCF7C2ABF962B00491CB4 /* ProfileScreen */,
 			);
 			path = Sourses;
 			sourceTree = "<group>";
@@ -267,7 +264,6 @@
 			files = (
 				31E170A22AAFA68D000A3805 /* FirstScreenViewController.swift in Sources */,
 				31E1709E2AAFA68D000A3805 /* AppDelegate.swift in Sources */,
-				31E170C12AB9903A000A3805 /* Models.swift in Sources */,
 				313C96272AD5D54700F67FEB /* ProfileAssembly.swift in Sources */,
 				31E170C32AB9A0C3000A3805 /* CoreData.swift in Sources */,
 				310CCF7B2ABF7D9800491CB4 /* MainPresenter.swift in Sources */,
