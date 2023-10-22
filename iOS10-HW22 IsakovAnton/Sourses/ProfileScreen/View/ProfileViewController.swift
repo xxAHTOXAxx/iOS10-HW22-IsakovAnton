@@ -3,10 +3,10 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     var presenter: ProfileViewOutput?
-    var user: Profile?
-    var nameUser: String?
-    var gender: Int16?
-    var birthDate: Date?
+    private var user: Profile?
+    private var nameUser: String?
+    private var gender: Int16?
+    private var birthDate: Date?
     
     let saveButton: UIButton = {
         let button = UIButton()
@@ -125,11 +125,11 @@ class ProfileViewController: UIViewController {
         })
         
         UIView.animate(withDuration: 0.2, animations: {
-                self.saveButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-            }) { _ in
-                UIView.animate(withDuration: 0.2) {
-                    self.saveButton.transform = .identity
-                }
+            self.saveButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }) { _ in
+            UIView.animate(withDuration: 0.2) {
+                self.saveButton.transform = .identity
+            }
             }
     }
 }

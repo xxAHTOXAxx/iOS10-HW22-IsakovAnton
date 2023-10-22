@@ -3,8 +3,6 @@ import UIKit
 import CoreData
 
 protocol MainViewInput: AnyObject {
-    func reloadData()
-    func updateTableView()
     func updateProfile(name: Profile)
     func updateView(array: [Profile])
 }
@@ -18,23 +16,16 @@ protocol MainViewOutput: AnyObject {
 class MainPresenter {
     
     private weak var view: MainViewInput?
-    var coreDataManager: CoreDataManager
+    private let coreDataManager = CoreDataManager()
     
-    init(view: MainViewInput, coreDataManager: CoreDataManager) {
+    init(view: MainViewInput) {
         self.view = view
-        self.coreDataManager = coreDataManager
     }
     
-    func addDataToCoreData(name: String, gender: Int16, birthDate: Date) {
-        coreDataManager.addUsers(name: name, gender: gender, birthDate: birthDate)
-        view?.updateTableView()
-    }
     func deleteDataFromCoreData(user: Profile) {
         let isSuccess = coreDataManager.deleteUsers(user: user)
            if isSuccess {
                view?.updateView(array: coreDataManager.getUsers())
-           } else {
-               // Обработка случая, когда удаление не удалось
            }
     }
 }

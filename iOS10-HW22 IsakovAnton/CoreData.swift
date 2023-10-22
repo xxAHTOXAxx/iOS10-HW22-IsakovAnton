@@ -32,15 +32,6 @@ class CoreDataManager {
         }
     }
     
-    // Добавление нового пользователя
-        func addUsers(name: String, gender: Int16, birthDate: Date) {
-            let newUser = Profile(context: context)
-            newUser.name = name
-            newUser.gender = gender
-            newUser.birthDate = birthDate
-        }
-
-    
     // Удаление пользователя
     func deleteUsers(user: Profile) -> Bool {
         context.delete(user)
@@ -65,5 +56,3 @@ class CoreDataManager {
         }
     }
 }
-
-
